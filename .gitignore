@@ -43,3 +43,5 @@ frontend/next-env.d.ts
 backend/auth/.dockerignore
 backend/auth/go.mod
 backend/auth/go.sum
+
+frontend/public/images
