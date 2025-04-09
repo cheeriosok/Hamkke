@@ -1,3 +1,5 @@
+(On Hold for the month of April)
+
 # Designing a Scalable Microservice Architecture for a Pinterest-Like Platform
 
 This project is an in-progress architecture for a distributed Pinterest-like social platform. The system is being designed with scalability, high throughput, and modular service composition in mind — optimized for real-time timelines, content search, and read-heavy workloads for Image and Video sharing.
