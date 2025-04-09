@@ -1,4 +1,4 @@
-# 🧠 Designing a Scalable Microservice Architecture for a Twitter-Like Platform
+# Designing a Scalable Microservice Architecture for a Twitter-Like Platform
 
 This project is an in-progress architecture for a distributed Twitter/Pinterest-like social platform. The system is being designed with scalability, high throughput, and modular service composition in mind — optimized for real-time timelines, content search, and write-heavy workloads.
 
