@@ -1,8 +1,8 @@
-# Designing a Scalable Microservice Architecture for a Twitter-Like Platform
+# Designing a Scalable Microservice Architecture for a Pinterest-Like Platform
 
-This project is an in-progress architecture for a distributed Twitter/Pinterest-like social platform. The system is being designed with scalability, high throughput, and modular service composition in mind — optimized for real-time timelines, content search, and write-heavy workloads.
+This project is an in-progress architecture for a distributed Pinterest-like social platform. The system is being designed with scalability, high throughput, and modular service composition in mind — optimized for real-time timelines, content search, and read-heavy workloads for Image and Video sharing.
 
-The goal is to strike a balance between **performance**, **developer agility**, and **read optimization** by leveraging purpose-fit databases, aggressive caching, and asynchronous pipelines.
+The goal is to strike a balance between **performance**, **developer agility**, and **read optimization** by leveraging purpose-fit databases, aggressive caching, and asynchronous pipelines. The architecture is highly reminiscent of Twitter with a greater focus on Image/Video media as "Tweets".
 
 ---
 
@@ -25,7 +25,7 @@ The frontend (web) communicates directly with an API Gateway, which will route r
 
 ### 2. **API Gateway**
 Acts as the single entry point for:
-- Tweet/Reply CRUD APIs
+- Post/Reply CRUD APIs
 - User authentication and metadata access
 - Timeline and feed generation
 - Full-text and future semantic search
@@ -35,23 +35,23 @@ Acts as the single entry point for:
 
 ## In-Progress Microservices
 
-### CRUD Tweets & Replies
-- Tweets and replies will be handled as separate services.
+### CRUD Posts & Replies
+- s and replies will be handled as separate services.
 - ElastiCache will provide read-through and write-through caching.
 - Persistent storage will be handled by Apache Cassandra for scalable writes.
 
-> We're intentionally keeping tweet and reply schemas separate to reduce coupling early on and make future evolution easier.
+> We're intentionally keeping Post and reply schemas separate to reduce coupling early on and make future evolution easier.
 
 ---
 
 ### Search Service
-- Tweets will be indexed in **Elasticsearch**.
+- Posts will be indexed in **Elasticsearch**.
 - We're planning to experiment with **vector databases** in the future to support semantic search and recommendations.
 
 ---
 
 ### Timeline Generation
-- Implements **write-out fan-out architecture** — new tweets are pushed to followers' timeline caches upon creation.
+- Implements **write-out fan-out architecture** — new Posts are pushed to followers' timeline caches upon creation.
 - Future optimization will include multi-stage pipeline with Message Queues to decouple write latency from timeline construction.
 
 ---
@@ -72,11 +72,11 @@ Acts as the single entry point for:
 ## Planned Storage Strategy
 
 - **S3 + CDN** for blob storage (PFPs, media)
-- **ElastiCache** for caching tweets, replies, timelines
+- **ElastiCache** for caching Posts, replies, timelines
 - **Cassandra** as the main scalable write store
 - **Neo4j** for the follower graph
 - **Relational DB** for user metadata
-- **ElasticSearch** for full-text tweet search
+- **ElasticSearch** for full-text Post search
 - **Message Queues** for async timeline propagation
 - **CDC (Change Data Capture)** for event-driven indexing and analytics
 
